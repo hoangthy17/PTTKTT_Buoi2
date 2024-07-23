@@ -1,36 +1,19 @@
 ﻿using System;
 
-class Program
+class MergeSort
 {
-    static void Main()
-    {
-        Console.Title = "Merge Sort";
-        var numbers = new[] { 10, 3, 1, 7, 9, 2, 0 };
 
-        // In ra dãy số chưa được sắp xếp
-        Console.WriteLine("Truoc khi sap xep:");
-        InMang(numbers);
-
-        // Sắp xếp dãy số bằng thuật toán merge sort
-        MergeSort(numbers, 0, numbers.Length - 1);
-
-        // In ra dãy số đã được sắp xếp
-        Console.WriteLine("\nSau khi sap xep:");
-        InMang(numbers);
-
-        Console.ReadKey(); // Chờ người dùng nhấn một phím trước khi đóng cửa sổ console
-    }
 
     // Hàm sắp xếp merge sort
-    static void MergeSort(int[] a, int left, int right)
+    static void Merge_Sort(int[] a, int left, int right)
     {
         if (left < right)
         {
             int mid = (left + right) / 2;
 
             // Sắp xếp nửa đầu và nửa sau của mảng
-            MergeSort(a, left, mid);
-            MergeSort(a, mid + 1, right);
+            Merge_Sort(a, left, mid);
+            Merge_Sort(a, mid + 1, right);
 
             // Trộn hai nửa đã sắp xếp
             Merge(a, left, mid, right);
@@ -93,7 +76,7 @@ class Program
     }
 
     // Hàm in ra mảng
-    static void InMang (int[] array)
+    static void InMang(int[] array)
     {
         foreach (var number in array)
         {
@@ -101,4 +84,23 @@ class Program
         }
         Console.WriteLine();
     }
+    static void Main()
+    {
+        Console.Title = "Merge Sort";
+        var numbers = new[] { 10, 3, 1, 7, 9, 2, 0 };
+
+        // In ra dãy số chưa được sắp xếp
+        Console.WriteLine("Truoc khi sap xep:");
+        InMang(numbers);
+
+        // Sắp xếp dãy số bằng thuật toán merge sort
+        Merge_Sort(numbers, 0, numbers.Length - 1);
+
+        // In ra dãy số đã được sắp xếp
+        Console.WriteLine("\nSau khi sap xep:");
+        InMang(numbers);
+
+        Console.ReadKey(); // Chờ người dùng nhấn một phím trước khi đóng cửa sổ console
+    }
 }
+
